@@ -1,0 +1,24 @@
+{
+  "name": "jarvis-bot",
+  "version": "1.0.0",
+  "description": "qutopia bot",
+  "main": "app.js",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "discord.js": "^11.3.2",
+    "erlpack": "^0.1.2",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "node-fetch": "^2.1.2",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.3",
+    "passport-oauth2-refresh": "^1.1.0",
+    "uws": "^10.148.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

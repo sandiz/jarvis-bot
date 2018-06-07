@@ -1,0 +1,28 @@
+{
+    "quizmasters": [],
+    "scores": {
+        "FightClub": {
+            "score": 0,
+            "wins": 1
+        },
+        "Dequel": {
+            "score": 0,
+            "wins": 0
+        },
+        "TeamC": {
+            "score": 0,
+            "wins": 0
+        }
+    },
+    "teams": {
+        "452937970643763221": {
+            "name": "FightClub"
+        },
+        "452950093486620712": {
+            "name": "Dequel"
+        },
+        "452950624959594497": {
+            "name": "TeamC"
+        }
+    }
+}
