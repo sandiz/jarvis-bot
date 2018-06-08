@@ -26,6 +26,12 @@ function initTeams(client) {
                 console.log(`Team ${channel.name} with ID: ${id} Wins: ${score} and Score: ${wins}`);
             }
         }
+        else if (channel instanceof Discord.GuildChannel) {
+            if (channel.name == "general") {
+                qm = tally.quizmasters.join(", ");
+                channel.setTopic(`Next QuizMasters: [${qm}]`);
+            }
+        }
     });
     console.log("Total Teams: " + Object.keys(tally.teams).length);
 }

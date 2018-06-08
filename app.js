@@ -74,10 +74,10 @@ client.on("ready", () => {
     require("./commands/init.js").initTeams(client);
 });
 client.on("channelCreate", (channel) => {
-    initTeams();
+    require("./commands/init.js").initTeams(client);
 });
 client.on("channelDelete", (channel) => {
-    initTeams();
+    require("./commands/init.js").initTeams(client);
 });
 client.on("message", async message => {
     handleMessage(message);
