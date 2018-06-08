@@ -1,6 +1,12 @@
 {
     "qm_role": "QuizMaster",
-    "quizmasters": [],
+    "quizmasters": [
+        "Swarup",
+        "Sandi",
+        "Shyam",
+        "Golak",
+        "Chetan"
+    ],
     "scores": {
         "FightClub": {
             "score": 0,
