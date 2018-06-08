@@ -7,11 +7,11 @@ async function help(client, message, command, args) {
             fields: [
                 {
                     name: "Add Score",
-                    value: "/j as `@role` `points`: add points to role "
+                    value: "/j add `@role` `points`: add points to role "
                 },
                 {
                     name: "Reset Score",
-                    value: "/j rs `@role` : reset points to 0 "
+                    value: "/j reset `@role` : reset points to 0 "
                 },
                 {
                     name: "Current Score",
