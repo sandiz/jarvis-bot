@@ -10,15 +10,18 @@
     "scores": {
         "FightClub": {
             "score": 0,
-            "wins": 1
+            "wins": 1,
+            "history": []
         },
         "Dequel": {
             "score": 0,
-            "wins": 0
+            "wins": 0,
+            "history": []
         },
         "TeamC": {
             "score": 0,
-            "wins": 0
+            "wins": 0,
+            "history": []
         }
     },
     "teams": {

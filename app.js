@@ -25,23 +25,7 @@ function validate(command) {
         return true;
     return false;
 }
-client.on("ready", () => {
-    // This event will run if the bot starts, and logs in, successfully.
-    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-    // Example of changing the bot's playing game to something useful. `client.user` is what the
-    // docs refer to as the "ClientUser".
-    //client.user.setActivity(`Serving ${client.guilds.size} servers`);
-    client.user.setActivity('Mind Games', { type: 'PLAYING' })
-        .catch(console.error);
-    require("./commands/init.js").initTeams(client);
-});
-client.on("channelCreate", (channel) => {
-    initTeams();
-});
-client.on("channelDelete", (channel) => {
-    initTeams();
-});
-client.on("message", async message => {
+async function handleMessage(message) {
     //console.log(message);
     // This event will run on every single message received, from any channel or DM.
 
@@ -78,15 +62,38 @@ client.on("message", async message => {
     } catch (err) {
         console.error(err);
     }
+}
+client.on("ready", () => {
+    // This event will run if the bot starts, and logs in, successfully.
+    console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+    // Example of changing the bot's playing game to something useful. `client.user` is what the
+    // docs refer to as the "ClientUser".
+    //client.user.setActivity(`Serving ${client.guilds.size} servers`);
+    client.user.setActivity('Mind Games', { type: 'PLAYING' })
+        .catch(console.error);
+    require("./commands/init.js").initTeams(client);
+});
+client.on("channelCreate", (channel) => {
+    initTeams();
+});
+client.on("channelDelete", (channel) => {
+    initTeams();
+});
+client.on("message", async message => {
+    handleMessage(message);
+});
+client.on("messageUpdate", async (omsg, nmsg) => {
+    handleMessage(nmsg);
 });
 client.login(config.token);
     // +j qm -> quiz master queue
     // +j qm push/pop -> add/remove
 
-    // +j aw FightClub -> track quizzes won
 
     // +j screenshare
 
     // +j as FightClub -15 -> add/remove score -- DONE
     // +j rs -- DONE
     // +j init -- DONE
+    // +j finalize -- DONE
+    // +j score | fs -- DONE

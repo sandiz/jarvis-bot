@@ -31,20 +31,8 @@ function initTeams(client) {
 }
 async function init(client, message, command, args) {
     if (command == "init") {
-        initTeams();
-        var teamInfo = "";
-
-        teams.forEach((val, key, map) => {
-            teamInfo += `Team ${key} \n\tCurrent Score: ${val.score}\n\tTotal Wins:${val.wins}\n\n`;
-        });
-        message.channel.send({
-            embed: {
-                title: "Team Scores",
-                description: "```" + `${teamInfo}` + "```",
-                color: 14955080,
-                timestamp: new Date()
-            }
-        });
+        initTeams(client);
+        require("./score.js").run(client, message, "fs", []);
     }
 }
 exports.run = init;

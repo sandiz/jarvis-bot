@@ -4,12 +4,16 @@ async function addScore(client, message, command, args) {
         message.reply("needs 2 args, @role and points (you can use +/- to add/subtract)");
         return;
     }
-    if (message.mentions.roles.size != 1) {
+    if (message.mentions.roles.size < 1) {
         message.reply("need to mention one role");
         return;
     }
-    points = parseInt(args[1]);
-    role = message.mentions.roles.entries().next().value[1];
+    var points = parseInt(args[args.length - 1]);
+    entries = message.mentions.roles.entries();
+    roles = [];
+    for (let [k, v] of entries) {
+        roles.push(v.name);
+    }
     delete require.cache[require.resolve(`../tally.json`)];
     var tally = require("../tally.json");
 
@@ -19,21 +23,19 @@ async function addScore(client, message, command, args) {
         return;
     }
 
-    var teamname = "";
     for (var key in tally.teams) {
         var value = tally.teams[key];
-        if (value.name == role.name)
-            teamname = role.name;
+        if (roles.indexOf(value.name) != -1) {
+            tally.scores[value.name].score += points;
+            tally.scores[value.name].history.push(points);
+        }
+        else {
+            tally.scores[value.name].history.push(0);
+        }
     }
-
-    if (teamname == "") {
-        message.reply("Team not found in tally")
-        return;
-    }
-    tally.scores[teamname].score += points;
     fs.writeFile('./tally.json', JSON.stringify(tally, null, 4), 'utf8', (err) => {
         require("./init.js").initTeams(client);
-        message.channel.send(`${points} to team ${role.name}'s score. New Score: ${tally.scores[teamname].score}`);
+        message.channel.send(`${points} to team ${roles.join(', ')}'s score.`);
     });
 }
 exports.run = addScore;
