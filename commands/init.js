@@ -1,10 +1,7 @@
 const Discord = require("discord.js");
 
-var teams = new Discord.Collection();
 function initTeams(client) {
-    delete require.cache[require.resolve(`../config.json`)];
     delete require.cache[require.resolve(`../tally.json`)];
-    const config = require("../config.json");
     const tally = require("../tally.json");
     client.channels.forEach((channel, id) => {
         if (channel instanceof Discord.CategoryChannel) {
@@ -24,14 +21,13 @@ function initTeams(client) {
                     score = tally.scores[teamName].score;
                     wins = tally.scores[teamName].wins;
                 }
-                teams.set(teamName, { id: id, score: score, wins: wins });
                 channel.setName(teamName + ` - Score: ${score} Wins: ${wins} `, "score-update")
                     .catch(console.error);
                 console.log(`Team ${channel.name} with ID: ${id} Wins: ${score} and Score: ${wins}`);
             }
         }
     });
-    console.log("Total Teams: " + teams.size);
+    console.log("Total Teams: " + Object.keys(tally.teams).length);
 }
 async function init(client, message, command, args) {
     if (command == "init") {
@@ -53,4 +49,3 @@ async function init(client, message, command, args) {
 }
 exports.run = init;
 exports.initTeams = initTeams;
-exports.teams = teams;

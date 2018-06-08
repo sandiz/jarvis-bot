@@ -85,8 +85,8 @@ client.login(config.token);
 
     // +j aw FightClub -> track quizzes won
 
-    // +j as FightClub -15 -> add/remove score
-    // +j rs
-
-    // +j init
     // +j screenshare
+
+    // +j as FightClub -15 -> add/remove score -- DONE
+    // +j rs -- DONE
+    // +j init -- DONE

@@ -1,3 +1,4 @@
+const fs = require('fs');
 async function addScore(client, message, command, args) {
     //add to tally json
     // init teams
@@ -11,11 +12,23 @@ async function addScore(client, message, command, args) {
     }
     points = parseInt(args[1]);
     role = message.mentions.roles.entries().next().value[1];
-    //check if role.name exists in team
-    //delete json cache
-    //open json file
-    //modify score
-    //savejson file
-    message.channel.send(`Added ${points} to team ${role.name}'s score.`);
+    delete require.cache[require.resolve(`../tally.json`)];
+    var tally = require("../tally.json");
+    var teamname = "";
+    for (var key in tally.teams) {
+        var value = tally.teams[key];
+        if (value.name == role.name)
+            teamname = role.name;
+    }
+
+    if (teamname == "") {
+        message.reply("Team not found in tally")
+        return;
+    }
+    tally.scores[teamname].score += points;
+    fs.writeFile('./tally.json', JSON.stringify(tally, null, 4), 'utf8', (err) => {
+        require("./init.js").initTeams(client);
+        message.channel.send(`${points} to team ${role.name}'s score. New Score: ${tally.scores[teamname].score}`);
+    });
 }
 exports.run = addScore;
