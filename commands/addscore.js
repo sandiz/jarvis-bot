@@ -21,6 +21,7 @@ async function handleMultiScore(client, message, command, args) {
     }
     fs.writeFile('./tally.json', JSON.stringify(tally, null, 4), 'utf8', (err) => {
         require("./init.js").initTeams(client);
+        require("./score.js").run(client, message, "score", []);
     });
 }
 async function addScore(client, message, command, args) {
