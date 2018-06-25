@@ -61,3 +61,4 @@ typings/
 .next
 # secrets
 config.json
+a.out

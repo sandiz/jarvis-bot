@@ -47,8 +47,8 @@ async function handleMessage(message) {
         message.channel.send("invalid command: " + command);
         return;
     }
-    console.log(message);
-    console.log("command: " + command + " | argsize: " + args.length);
+    //console.log(message);
+    //console.log("command: " + command + " | argsize: " + args.length);
     // Let's go with a few common example commands! Feel free to delete or change those.
     try {
         if (config.commands[command] != null) {

@@ -1,7 +1,6 @@
 {
     "qm_role": "QuizMaster",
     "quizmasters": [
-        "Swarup",
         "Sandi",
         "Shyam",
         "Golak",
@@ -10,7 +9,7 @@
     "scores": {
         "FightClub": {
             "score": 0,
-            "wins": 1,
+            "wins": 2,
             "history": []
         },
         "Dequel": {
@@ -18,7 +17,7 @@
             "wins": 0,
             "history": []
         },
-        "TeamC": {
+        "PurpleHaze": {
             "score": 0,
             "wins": 0,
             "history": []
@@ -32,7 +31,7 @@
             "name": "Dequel"
         },
         "452950624959594497": {
-            "name": "TeamC"
+            "name": "PurpleHaze"
         }
     }
 }

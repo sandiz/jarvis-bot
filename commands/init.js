@@ -23,7 +23,7 @@ function initTeams(client) {
                 }
                 channel.setName(teamName + ` - Score: ${score} Wins: ${wins} `, "score-update")
                     .catch(console.error);
-                console.log(`Team ${channel.name} with ID: ${id} Wins: ${score} and Score: ${wins}`);
+                console.log(`Team ${channel.name} with ID: ${id} Wins: ${wins} and Score: ${score}`);
             }
         }
         else if (channel instanceof Discord.GuildChannel) {

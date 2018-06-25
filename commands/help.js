@@ -10,6 +10,10 @@ async function help(client, message, command, args) {
                     value: "/j add `@role` `points`: add points to role "
                 },
                 {
+                    name: "Add Score",
+                    value: "/j add +30,+20,-5: bulk add scores for all teams "
+                },
+                {
                     name: "Reset Score",
                     value: "/j reset `@role` : reset points to 0 "
                 },
